@@ -23,7 +23,6 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Handle Submit is called");
     try {
       const response = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",
@@ -36,6 +35,8 @@ const SignUp = () => {
         setUser({ username: "", email: "", phone: "", password: "" });
         alert("User Registration Complete.");
         navigate("/login");
+      } else if (response.status === 422) {
+        alert("Fill Data in proeper format");
       } else if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
