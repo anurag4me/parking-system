@@ -31,6 +31,7 @@ const Login = () => {
       if (response.ok) {
         setUser({ email: "", password: "" });
         navigate("/");
+        alert("Logged in Successfully");
       } else alert("Invalid Credentials");
     } catch (error) {
       console.log(error);

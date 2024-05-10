@@ -34,13 +34,11 @@ const SignUp = () => {
       if (response.ok) {
         const responseData = await response.json();
         setUser({ username: "", email: "", phone: "", password: "" });
+        alert("User Registration Complete.");
         navigate("/login");
-        console.log(responseData);
       } else if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      console.log("response is called");
     } catch (error) {
       console.error("Error:", error.message);
     }
