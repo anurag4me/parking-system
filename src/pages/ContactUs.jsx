@@ -42,7 +42,7 @@ const ContactUs = () => {
   return (
     <section
       id="feedback"
-      className="dark:bg-gray-900 text-grey-600 body-font relative"
+      className="text-black"
     >
       <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
         <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
@@ -50,13 +50,10 @@ const ContactUs = () => {
             width="100%"
             height="100%"
             className="absolute inset-0"
-            frameBorder="0"
             title="map"
-            marginHeight="0"
-            marginWidth="0"
-            scrolling="no"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d238132.6728888523!2d72.65748223205493!3d21.15944056645878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0xfe4558290938b042!2sSurat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1715166752866!5m2!1sen!2sin"
             style={{ filter: "grayscale(1) contrast(1.2) opacity(0.4)" }}
+            loading="lazy"
           ></iframe>
           <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md">
             <div className="lg:w-1/2 px-6">
