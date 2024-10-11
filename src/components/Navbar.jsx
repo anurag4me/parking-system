@@ -20,7 +20,7 @@ const Navbar = () => {
           <Link to="/" className="mr-5 hover:text-white">
             Home
           </Link>
-          <Link to="#" className="mr-5 hover:text-white">
+          <Link to="/search" className="mr-5 hover:text-white">
             Search
           </Link>
           <Link to="/about" className="mr-5 hover:text-white">
@@ -29,7 +29,6 @@ const Navbar = () => {
           <Link to="/contact-us" className="mr-5 hover:text-white">
             Contact Us
           </Link>
-          {/* <a className="mr-5 hover:text-white">Fourth Link</a> */}
         </nav>
         <button
           to="/login"
