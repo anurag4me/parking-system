@@ -20,6 +20,9 @@ const Navbar = () => {
           <Link to="/" className="mr-5 hover:text-white">
             Home
           </Link>
+          <Link to="#" className="mr-5 hover:text-white">
+            Search
+          </Link>
           <Link to="/about" className="mr-5 hover:text-white">
             About
           </Link>
