@@ -11,13 +11,12 @@ const home = async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    console.log(req.body);
     const { uername, email, phone, password } = req.body;
 
     const userExist = await User.findOne({ email });
 
     if (userExist) {
-      res.status(400).json({ msg: "email already exist" });
+      return res.status(400).json({ msg: "email already exist" });
     }
 
     const saltRound = 10;
@@ -62,7 +61,6 @@ const login = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json("Internal server error");
-    // console.log(error);
   }
 };
 
