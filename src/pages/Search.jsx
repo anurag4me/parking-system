@@ -36,7 +36,9 @@ const Search = () => {
         </button>
       </form>
 
-      <MapIntegration />
+      <div className="container py-10 px-4 sm:px-24 mx-auto ">
+        <MapIntegration />
+      </div>
     </>
   );
 };
