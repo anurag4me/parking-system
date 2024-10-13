@@ -67,12 +67,12 @@ const ContactUs = () => {
                 EMAIL
               </h2>
               <a className="text-indigo-500 leading-relaxed">
-                example@email.com
+                anuragmishra5033@gmail.com
               </a>
               <h2 className="title-font font-semibold text-white-900 tracking-widest text-xs mt-4">
                 PHONE
               </h2>
-              <p className="leading-relaxed">123-456-7890</p>
+              <p className="leading-relaxed">977-304-9209</p>
             </div>
           </div>
         </div>
