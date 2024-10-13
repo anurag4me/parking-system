@@ -23,6 +23,9 @@ const Navbar = () => {
           <Link to="/search" className="mr-5 hover:text-white">
             Search
           </Link>
+          <Link to="/rent-your-space" className="mr-5 hover:text-white">
+            Rent Parking
+          </Link>
           <Link to="/about" className="mr-5 hover:text-white">
             About
           </Link>
