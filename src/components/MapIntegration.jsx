@@ -74,7 +74,7 @@ const MapIntegration = ({ parkingSpots }) => {
 
         // Create an InfoWindow for each marker
         const infoWindow = new window.google.maps.InfoWindow({
-          content: `<div><h3>${spot.locName}</h3><p>2-wheel slots: ${spot.slot2wheel}</p><p>4-wheel slots: ${spot.slot4wheel}</p></div>`,
+          content: `<div><h3 style="color:black;" >${spot.locName}</h3><p style="color:black;" >2-wheel slots: ${spot.slot2wheel}</p><p style="color:black;" >4-wheel slots: ${spot.slot4wheel}</p></div>`,
         });
 
         // Add a click event listener to open the info window when marker is clicked
