@@ -3,13 +3,31 @@ import MapIntegration from "../components/MapIntegration";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const handleSearch = (searchTerm) => {
-    // Implement your search logic here
-    console.log("Searching for:", searchTerm);
-    // Update parkingSpots based on the search results
-    // For now, we'll just log the search term
+  const [parkingSpots, setParkingSpots] = useState([]); // State to store parking spots data
+
+  // Function to handle the search request
+  const handleSearch = async (searchTerm) => {
+    try {
+      // Fetch parking spots based on the location name using the backend API
+      const response = await fetch(
+        `http://localhost:5000/api/parking-spots/nearby?locationName=${encodeURIComponent(
+          searchTerm
+        )}`
+      );
+      const data = await response.json();
+
+      if (response.ok) {
+        // Update the parking spots state with the fetched data
+        setParkingSpots(data);
+      } else {
+        console.error("Error fetching parking spots:", data.message);
+      }
+    } catch (error) {
+      console.error("Error during search:", error);
+    }
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSearch(searchTerm);
@@ -36,9 +54,9 @@ const Search = () => {
         </button>
       </form>
 
-      <div className="container py-10 px-4 sm:px-24 mx-auto ">
-        <MapIntegration />
-      </div>
+      {/* Pass the parkingSpots data to the MapIntegration component */}
+      <MapIntegration parkingSpots={parkingSpots} />
+
     </>
   );
 };
