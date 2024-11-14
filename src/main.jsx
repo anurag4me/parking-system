@@ -7,6 +7,7 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import Search from "./pages/Search.jsx";
+import RentParking from "./pages/RentParking.jsx";
 import About from "./pages/About.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/sign-up", element: <SignUp /> },
       { path: "/search", element: <Search /> },
+      { path: "/rent-your-space", element: <RentParking /> },
       { path: "/about", element: <About /> },
       { path: "/contact-us", element: <ContactUs /> },
     ],

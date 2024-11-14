@@ -87,16 +87,8 @@ const MapIntegration = ({ parkingSpots }) => {
       });
     }
   };
-
-  return (
-    <div>
-      {isError && (
-        <p style={{ color: "red" }}>Failed to load map or fetch data</p>
-      )}
-      <div ref={mapRef} style={{ width: "100%", height: "400px" }} />
-      {!isMapLoaded && !isError && <p>Loading map...</p>}
-    </div>
-  );
+  
+  return <div className='rounded-lg' ref={mapRef} style={{ width: '100%', height: '400px' }} />;
 };
 
 export default MapIntegration;

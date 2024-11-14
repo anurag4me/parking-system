@@ -56,6 +56,7 @@ const Search = () => {
 
       {/* Pass the parkingSpots data to the MapIntegration component */}
       <MapIntegration parkingSpots={parkingSpots} />
+
     </>
   );
 };
