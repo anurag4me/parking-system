@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 body {
-    background-color: rgb(17 24 39);
-    color: white;
+  background-color: rgb(17 24 39);
+  color: white;
+}
+.toastBody {
+  font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
 }

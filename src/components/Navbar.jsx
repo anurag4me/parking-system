@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/no-parking_12504620.png";
+import { useAuth } from "../store/auth";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("Home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isLoggedIn } = useAuth();
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -19,18 +21,22 @@ const Navbar = () => {
     <header className="text-gray-400 bg-gray-900 body-font">
       <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse" onClick={() => handleLinkClick("Home")}>
+          <Link
+            to="/"
+            className="flex items-center space-x-3 rtl:space-x-reverse"
+            onClick={() => handleLinkClick("Home")}
+          >
             <img src={logo} className="h-8" alt="Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               SmartPark
             </span>
           </Link>
           <button
-            onClick={toggleMenu} 
+            onClick={toggleMenu}
             type="button"
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-dropdown"
-            aria-expanded={isMenuOpen} 
+            aria-expanded={isMenuOpen}
           >
             <span className="sr-only">Open main menu</span>
             <svg
@@ -50,7 +56,9 @@ const Navbar = () => {
             </svg>
           </button>
           <div
-            className={`z-10 ${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
+            className={`z-10 ${
+              isMenuOpen ? "block" : "hidden"
+            } w-full md:block md:w-auto`}
             id="navbar-dropdown"
           >
             <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
@@ -106,19 +114,35 @@ const Navbar = () => {
                   Contact
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/login"
-                  className={`block py-2 px-3 rounded ${
-                    activeLink === "Login"
-                      ? "bg-blue-700 text-white"
-                      : "text-gray-900 dark:text-white hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white"
-                  }`}
-                  onClick={() => handleLinkClick("Login")}
-                >
-                  Login
-                </Link>
-              </li>
+              {isLoggedIn ? (
+                <li>
+                  <Link
+                    to="/logout"
+                    className={`block py-2 px-3 rounded ${
+                      activeLink === "Logout"
+                        ? "bg-blue-700 text-white"
+                        : "text-gray-900 dark:text-white hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white"
+                    }`}
+                    onClick={() => handleLinkClick("Logout")}
+                  >
+                    Logout
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <Link
+                    to="/login"
+                    className={`block py-2 px-3 rounded ${
+                      activeLink === "Login"
+                        ? "bg-blue-700 text-white"
+                        : "text-gray-900 dark:text-white hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white"
+                    }`}
+                    onClick={() => handleLinkClick("Login")}
+                  >
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 const ContactUs = () => {
   const defaultContact = {
@@ -8,6 +9,18 @@ const ContactUs = () => {
     message: "",
   };
   const [contact, setContact] = useState(defaultContact);
+  const [userData, setUserData] = useState(true);
+  const { user } = useAuth();
+  console.log("username : ", user.username);
+
+  if (userData && user) {
+    setContact({
+      username: user.username,
+      email: user.email,
+      message: "",
+    });
+    setUserData(false);
+  }
 
   const navigate = useNavigate();
   const handleInput = (e) => {
