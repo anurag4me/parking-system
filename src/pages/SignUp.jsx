@@ -1,6 +1,8 @@
 import { useState } from "react";
 import image from "../assets/no-parking_12504620.png";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [user, setUser] = useState({
@@ -10,6 +12,7 @@ const SignUp = () => {
     password: "",
   });
   const navigate = useNavigate();
+  const { storeTokenInLS } = useAuth();
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -30,13 +33,17 @@ const SignUp = () => {
         body: JSON.stringify(user),
       });
 
+      const res_data = await response.json();
+
       if (response.ok) {
-        const responseData = await response.json();
+        storeTokenInLS(res_data.token);
         setUser({ username: "", email: "", phone: "", password: "" });
-        alert("User Registration Complete.");
-        navigate("/login");
-      } else if (response.status === 422) {
-        alert("Fill Data in proeper format");
+        toast.success("User Registration Complete.");
+        navigate("/");
+      } else if (response.status === 422 || response.status === 400) {
+        toast.error(
+          res_data.extraDetails ? res_data.extraDetails : res_data.message
+        );
       } else if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

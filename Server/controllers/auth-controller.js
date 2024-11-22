@@ -11,18 +11,18 @@ const home = async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    const { uername, email, phone, password } = req.body;
+    const { username, email, phone, password } = req.body;
 
     const userExist = await User.findOne({ email });
 
     if (userExist) {
-      return res.status(400).json({ msg: "email already exist" });
+      return res.status(400).json({ message: "email already exist" });
     }
 
     const saltRound = 10;
     const hash_password = await bcrypt.hash(password, saltRound);
     const userCreated = await User.create({
-      uername,
+      username,
       email,
       phone,
       password: hash_password,
@@ -64,4 +64,14 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { home, register, login };
+const user = async (req, res) => {
+  try {
+    const userData = req.user;
+    console.log("user data", userData);
+    return res.status(200).json({ userData });
+  } catch (error) {
+    console.log(`error from the route ${error}`);
+  }
+};
+
+module.exports = { home, register, login, user };

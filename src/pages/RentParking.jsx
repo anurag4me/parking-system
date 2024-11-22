@@ -9,7 +9,7 @@ export default function RentParking() {
         Let your parking space make money!
       </h2>
       <div className="row justify-content-center">
-        <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
+        <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
           Do not let the dotted lines go waste when you they can help you make
           money. If you have an extra parking space in your building, apartment
           or even your colony, convert it into a source of income by renting it
@@ -17,7 +17,7 @@ export default function RentParking() {
           also makes you financially more stable.
         </p>
         <br />
-        <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
+        <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
           All you need to do is register at SmartPark and become a member. Rent
           out your unused space online with us by sharing the details of
           location as well as the images and any customer who likes it as per
@@ -25,14 +25,14 @@ export default function RentParking() {
           availability of your parking space.
         </p>
         <br />
-        <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
+        <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
           SmartPark is the perfect handcrafted solution that assists people in
           parking, making it a win-win situation for both the parties. You earn
           on the parking slots and it becomes a stress-free parking for the
           driver.
         </p>
         <br />
-        <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
+        <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
           If you want to be a part of the revolutionary solution and have
           further queries regarding how renting parking spaces works, feel free
           to get in touch with SmartPark customer agents.
@@ -46,7 +46,7 @@ export default function RentParking() {
       <div className="flex flex-wrap -m-4 text-center p-24">
         <StatCard
           icon={<path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>}
-          value={<Link to='/login'>Login Here</Link>}
+          value={<Link to="/login">Login Here</Link>}
           label="Login with Google, Facebook or your registered email id and password."
         />
         <StatCard

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import image from "../assets/no-parking_12504620.png";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -9,6 +11,7 @@ const Login = () => {
   });
 
   const navigate = useNavigate();
+  const { storeTokenInLS } = useAuth();
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -28,11 +31,19 @@ const Login = () => {
         body: JSON.stringify(user),
       });
 
+      const responseData = await response.json();
+
       if (response.ok) {
+        storeTokenInLS(responseData.token);
         setUser({ email: "", password: "" });
         navigate("/");
-        alert("Logged in Successfully");
-      } else alert("Invalid Credentials");
+        toast.success("Logged in Successfully");
+      } else
+        toast.error(
+          responseData.extraDetails
+            ? responseData.extraDetails
+            : responseData.message
+        );
     } catch (error) {
       console.log(error);
     }
