@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/no-parking_12504620.png";
 import { useAuth } from "../store/auth";
+import { ActiveLinkContext } from "../App";
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState("Home");
+  const { activeLink, setActiveLink } = useContext(ActiveLinkContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isLoggedIn } = useAuth();
 
