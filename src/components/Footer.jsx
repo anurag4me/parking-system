@@ -19,108 +19,98 @@ const Footer = () => {
         <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-white-900 tracking-widest text-sm mb-3">
-              CATEGORIES
+              QUICK LINKS
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  First Link
+                <a href="/" className="text-white-600 hover:text-white-800">
+                  Home
                 </a>
               </li>
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Second Link
+                <a href="/search" className="text-white-600 hover:text-white-800">
+                  Search Parking
                 </a>
               </li>
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Third Link
+                <a href="/rent-your-space" className="text-white-600 hover:text-white-800">
+                  Rent Your Space
                 </a>
               </li>
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Fourth Link
+                <a href="/contact-us" className="text-white-600 hover:text-white-800">
+                  Contact Us
                 </a>
               </li>
             </nav>
           </div>
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-white-900 tracking-widest text-sm mb-3">
-              CATEGORIES
+              RESOURCES
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  First Link
+                <a href="/about-us" className="text-white-600 hover:text-white-800">
+                  About Us
                 </a>
               </li>
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Second Link
+                <a href="/terms" className="text-white-600 hover:text-white-800">
+                  FAQ
                 </a>
               </li>
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Third Link
-                </a>
-              </li>
-              <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Fourth Link
+                <a href="/privacy" className="text-white-600 hover:text-white-800">
+                  Privacy Policy
                 </a>
               </li>
             </nav>
           </div>
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-white-900 tracking-widest text-sm mb-3">
-              CATEGORIES
+              QUICK LINKS
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  First Link
+                <a href="/" className="text-white-600 hover:text-white-800">
+                  Home
                 </a>
               </li>
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Second Link
+                <a href="/search" className="text-white-600 hover:text-white-800">
+                  Search Parking
                 </a>
               </li>
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Third Link
+                <a href="/rent-your-space" className="text-white-600 hover:text-white-800">
+                  Rent Your Space
                 </a>
               </li>
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Fourth Link
+                <a href="/contact-us" className="text-white-600 hover:text-white-800">
+                  Contact Us
                 </a>
               </li>
             </nav>
           </div>
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-white-900 tracking-widest text-sm mb-3">
-              CATEGORIES
+              RESOURCES
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  First Link
+                <a href="/about-us" className="text-white-600 hover:text-white-800">
+                  About Us
                 </a>
               </li>
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Second Link
+                <a href="/terms" className="text-white-600 hover:text-white-800">
+                  FAQ
                 </a>
               </li>
               <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Third Link
-                </a>
-              </li>
-              <li>
-                <a className="text-white-600 hover:text-white-800">
-                  Fourth Link
+                <a href="/privacy" className="text-white-600 hover:text-white-800">
+                  Privacy Policy
                 </a>
               </li>
             </nav>
