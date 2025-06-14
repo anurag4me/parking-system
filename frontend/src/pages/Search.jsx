@@ -10,7 +10,7 @@ const Search = () => {
     try {
       // Fetch parking spots based on the location name using the backend API
       const response = await fetch(
-        `http://localhost:5000/api/parking-spots/nearby?locationName=${encodeURIComponent(
+        `${import.meta.env.VITE_BASE_URL}/api/parking-spots/nearby?locationName=${encodeURIComponent(
           searchTerm
         )}`
       );

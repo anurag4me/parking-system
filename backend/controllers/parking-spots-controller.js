@@ -16,7 +16,7 @@ const parkingSpotForm = async (req, res) => {
 
     // Fetch parking spots based on options
     const spots = await ParkingSpot.find(options);
-    console.log("Found spots:", spots); // Debug log to check fetched data
+    // console.log("Found spots:", spots); // Debug log to check fetched data
 
     if (spots.length === 0) {
       console.log("No parking spots found for the given criteria");

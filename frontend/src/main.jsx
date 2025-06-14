@@ -15,6 +15,7 @@ import PageNotFound from "./pages/PageNotFound.jsx";
 import { AuthProvider } from "./store/auth.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Booking from "./pages/Booking.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "/sign-up", element: <SignUp /> },
       { path: "/search", element: <Search /> },
       { path: "/rent-your-space", element: <RentParking /> },
+      { path: "/booking", element: <Booking /> },
       { path: "/about", element: <About /> },
       { path: "/contact-us", element: <ContactUs /> },
       { path: "/logout", element: <Logout /> },

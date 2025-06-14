@@ -18,6 +18,8 @@ function App() {
       setActiveLink("Search");
     } else if (path === "/rent-your-space") {
       setActiveLink("Rent Parking");
+    } else if (path === "/booking") {
+      setActiveLink("Booking");
     } else if (path === "/contact-us") {
       setActiveLink("Contact");
     } else if (path === "/login") {

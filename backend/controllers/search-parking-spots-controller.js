@@ -1,5 +1,4 @@
 const ParkingSpot = require("../models/maps-model");
-const axios = require("axios");
 
 const searchParkingSpots = async (req, res) => {
   try {
@@ -7,9 +6,10 @@ const searchParkingSpots = async (req, res) => {
     const locationName = req.query.locationName;
 
     // Step 1: Get coordinates of the location using Google Places API
-    const locationResponse = await axios.get(
+    const locationResponse = await fetch(
       `https://maps.gomaps.pro/maps/api/place/textsearch/json`,
       {
+        method: get,
         params: {
           query: locationName,
           key: process.env.VITE_GOOGLE_MAPS_API_KEY,
