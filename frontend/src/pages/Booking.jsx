@@ -33,7 +33,7 @@ const Booking = () => {
     };
 
     fetchSlots();
-  }, []);
+  }, [slots]);
 
   const handleSlotSelect = (slot) => {
     setSelectedSlot(slot);
@@ -51,7 +51,6 @@ const Booking = () => {
       paymentMethod,
       hours
     });
-    console.log(response.data.booking._doc)
 
     setTicket({
       slotId: selectedSlot._id,
