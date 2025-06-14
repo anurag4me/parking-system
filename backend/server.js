@@ -19,7 +19,7 @@ connectDb(process.env.MONGODB_URI || "mongodb+srv://anuragmishra5033:anuragmishr
 
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "https://your-netlify-app.netlify.app"],
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
 };
