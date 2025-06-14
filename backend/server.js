@@ -13,13 +13,13 @@ const ReleaseLog = require('./models/realeaseLog-model.js');
 const PORT = 5000;
 const app = express();
 
-connectDb(process.env.MONGODB_URI || "mongodb+srv://anuragmishra5033:anuragmishra5033@houserentalscluster.ep5injo.mongodb.net/SmartPark?retryWrites=true&w=majority&appName=HouseRentalsCluster")
+connectDb(process.env.MONGO_URI)
   .then(() => console.log("MongoDb started successfully!"))
   .catch((err) => console.log("MongoDb error:", err));
 
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "https://your-netlify-app.netlify.app", "https://smart-park-odecode.netlify.app"],
+  origin: ["http://localhost:5173", "https://smart-park-odecode.netlify.app"],
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
 };
