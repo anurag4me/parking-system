@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ActiveLinkContext } from "../App";
+import hero from "../assets/hero_section.png";
 
 const Hero = () => {
   const { setActiveLink } = useContext(ActiveLinkContext);
@@ -12,7 +13,7 @@ const Hero = () => {
   return (
     <section>
       <img
-        src="/src/assets/hero_section.png"
+        src={hero}
         alt="hero section"
         className="w-full h-full"
       />
