@@ -56,7 +56,7 @@ const Booking = () => {
       slotId: selectedSlot._id,
       slotNumber: selectedSlot.name,
       bookingTime: new Date().toISOString(),
-      expiryTime: response.data.booking.expiryTime,
+      expiryTime: response.data.booking._doc.expiryTime,
       amount,
       transactionId: response.data.booking._doc.slotId, // Now included from backend
       hours,
