@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../store/auth';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const UserProfile = () => {
   const { user, token } = useAuth();
@@ -8,6 +8,13 @@ const UserProfile = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [occupiedSlots, setOccupiedSlots] = useState(0);
+
+  const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
+  if(!isLoggedIn) {
+    alert('Please Log In First!')
+    navigate('/login')
+  }
 
   useEffect(() => {
     const fetchSlots = async () => {

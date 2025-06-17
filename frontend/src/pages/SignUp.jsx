@@ -5,20 +5,20 @@ import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
-  const [user, setUser] = useState({
+  const [user, setUserData] = useState({
     username: "",
     email: "",
     phone: "",
     password: "",
   });
   const navigate = useNavigate();
-  const { storeTokenInLS } = useAuth();
+  const { storeTokenInLS, setUser } = useAuth();
 
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
 
-    setUser({
+    setUserData({
       ...user,
       [name]: value,
     });
@@ -37,7 +37,8 @@ const SignUp = () => {
 
       if (response.ok) {
         storeTokenInLS(res_data.token);
-        setUser({ username: "", email: "", phone: "", password: "" });
+        setUserData({ username: "", email: "", phone: "", password: "" });
+        setUser(res_data.user) // Make changes in redux store as well
         toast.success("User Registration Complete.");
         navigate("/");
       } else if (response.status === 422 || response.status === 400) {

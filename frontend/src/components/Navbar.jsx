@@ -102,19 +102,21 @@ const Navbar = () => {
                   Booking
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/profile"
-                  className={`block py-2 px-3 rounded ${
-                    activeLink === "User Profile"
-                      ? "bg-blue-700 text-white"
-                      : "text-gray-900 dark:text-white hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white"
-                  }`}
-                  onClick={() => handleLinkClick("User Profile")}
-                >
-                  User Profile
-                </Link>
-              </li>
+              { isLoggedIn && (
+                <li>
+                  <Link
+                    to="/profile"
+                    className={`block py-2 px-3 rounded ${
+                      activeLink === "User Profile"
+                        ? "bg-blue-700 text-white"
+                        : "text-gray-900 dark:text-white hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white"
+                    }`}
+                    onClick={() => handleLinkClick("User Profile")}
+                  >
+                    User Profile
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link
                   to="/contact-us"

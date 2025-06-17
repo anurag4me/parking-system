@@ -32,6 +32,7 @@ const register = async (req, res) => {
       message: "registration successful",
       token: await userCreated.generateToken(),
       userId: userCreated._id.toString(),
+      user: userCreated
     });
   } catch (error) {
     res.status(400).json(error);
@@ -55,6 +56,7 @@ const login = async (req, res) => {
         message: "Login successful",
         token: await userExists.generateToken(),
         userId: userExists._id.toString(),
+        user: userExists
       });
     } else {
       return res.status(401).json({ message: "Invalid Email or Password" });

@@ -5,19 +5,19 @@ import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const [user, setUser] = useState({
+  const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
 
   const navigate = useNavigate();
-  const { storeTokenInLS } = useAuth();
+  const { storeTokenInLS, setUser } = useAuth();
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
 
-    setUser({
-      ...user,
+    setUserData({
+      ...userData,
       [name]: value,
     });
   };
@@ -28,14 +28,15 @@ const Login = () => {
       const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
+        body: JSON.stringify(userData),
       });
 
       const responseData = await response.json();
 
       if (response.ok) {
         storeTokenInLS(responseData.token);
-        setUser({ email: "", password: "" });
+        setUserData({email: "", password: ""})
+        setUser(responseData.user); // Make changes in redux store as well
         navigate("/");
         toast.success("Logged in Successfully");
       } else
@@ -79,7 +80,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   id="email"
-                  value={user.email}
+                  value={userData.email}
                   onChange={handleInput}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="example@gmail.com"
@@ -98,7 +99,7 @@ const Login = () => {
                   name="password"
                   id="password"
                   placeholder="••••••••"
-                  value={user.password}
+                  value={userData.password}
                   onChange={handleInput}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required=""
