@@ -4,7 +4,7 @@ import TestimonialCard from './cards/TestimonialCard';
 export default function TestimonialSection() {
   return (
     <section className="text-white body-font">
-      <div className="container px-5 py-24 mx-auto">
+      <div className="container px-5 py-16 mx-auto">
         <h1 className="text-3xl font-medium title-font mb-12 text-center">
           Testimonials
         </h1>

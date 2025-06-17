@@ -203,7 +203,7 @@ app.post('/api/validate', async (req, res) => {
     if (booking.status === 'completed') {
       return res.json({
         valid: false,
-        message: 'This ticket is already used once!'
+        message: 'This ticket is \nalready used once!'
       });
     }
 

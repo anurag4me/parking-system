@@ -11,7 +11,6 @@ const ContactUs = () => {
   const [contact, setContact] = useState(defaultContact);
   const [userData, setUserData] = useState(true);
   const { user } = useAuth();
-  console.log("username : ", user.username);
 
   if (userData && user) {
     setContact({

@@ -37,7 +37,7 @@ const Search = () => {
     <>
       <form
         onSubmit={handleSubmit}
-        className="flex items-center max-w-3xl mx-auto mt-8 mb-4"
+        className="flex items-center max-w-3xl mx-auto p-5 mt-8 mb-4"
       >
         <input
           type="text"
