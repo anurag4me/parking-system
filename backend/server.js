@@ -78,9 +78,9 @@ app.post('/api/bookings', async (req, res) => {
     // Update slot status
     slot.booked = true;
     slot.paymentDone = true;
-    slot.parkedFrom = bookingTime.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
-    slot.parkedTo = expiryTime.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
     slot.parkingHours = `${hours} hour${hours !== 1 ? 's' : ''}`;
+    // slot.parkedFrom = expiryTime.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+
     // Save both
     await Promise.all([booking.save(), slot.save()]);
     res.status(201).json({
@@ -129,7 +129,6 @@ app.post('/api/slots/release', async (req, res) => {
     slot.paymentDone = false;
     slot.booked = false;
     slot.parkedFrom = null;
-    slot.parkedTo = null;
     slot.parkingHours = null;
 
     // Create release log
@@ -187,8 +186,7 @@ app.post('/api/validate', async (req, res) => {
     }
 
     // Verify the booking exists in database
-    const booking = await Booking.findOne({ 
-      transactionId: ticket.transactionId,
+    const booking = await Booking.findOne({
       slotId: ticket.slotId
     }).populate('slotId');
 
@@ -198,6 +196,16 @@ app.post('/api/validate', async (req, res) => {
         message: 'Ticket not found in system'
       });
     }
+
+    if (booking.status === 'completed') {
+      return res.json({
+        valid: false,
+        message: 'This ticket is already used once!'
+      });
+    }
+
+    booking.status = "completed"
+    await booking.save()
 
     // Check if ticket is expired
     const now = new Date();
@@ -211,7 +219,9 @@ app.post('/api/validate', async (req, res) => {
     }
 
     // Check if slot is still assigned to this ticket
-    const slot = await ParkingSlot.findById(ticket.slotId);
+    const slot = await ParkingSlot.findByIdAndUpdate(ticket.slotId, {
+      parkedFrom: new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })
+    });
     if (!slot || !slot.booked || slot.paymentDone === false) {
       return res.json({
         valid: false,
@@ -262,7 +272,6 @@ app.get('/api/slots/release-all', authMiddleware, async (req, res) => {
       paymentDone: false,
       booked: false,
       parkedFrom: null,
-      parkedTo: null,
       parkingHours: null,
     }});
 

@@ -22,10 +22,6 @@ const parkingSlotSchema = new mongoose.Schema({
     type: String,
     default: null
   },
-  parkedTo: {
-    type: String,
-    default: null
-  },
   parkingHours: {
     type: String,
     default: null

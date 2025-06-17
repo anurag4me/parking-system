@@ -127,7 +127,7 @@ const Booking = () => {
                   <p className={`mt-2 font-medium ${
                     !slot.booked ? 'text-green-600' : 'text-red-600'
                   }`}>
-                    {!slot.booked ? 'Available' : `Booked until ${slot.parkedTo}`}
+                    {!slot.booked ? 'Available' : 'Booked'}
                   </p>
                 </div>
               ))}
