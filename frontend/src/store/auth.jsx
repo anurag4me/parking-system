@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
         setUser(data.userData);
       }
     } catch (error) {
-      console.error("Error fetching user data");
+      console.error("Error fetching user data", error);
     }
   };
 
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ storeTokenInLS, LogoutUser, isLoggedIn, user }}
+      value={{ storeTokenInLS, LogoutUser, isLoggedIn, user, token }}
     >
       {children}
     </AuthContext.Provider>

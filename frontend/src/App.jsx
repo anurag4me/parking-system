@@ -16,8 +16,8 @@ function App() {
       setActiveLink("Home");
     } else if (path === "/search") {
       setActiveLink("Search");
-    } else if (path === "/rent-your-space") {
-      setActiveLink("Rent Parking");
+    } else if (path === "/profile") {
+      setActiveLink("User Profile");
     } else if (path === "/booking") {
       setActiveLink("Booking");
     } else if (path === "/contact-us") {

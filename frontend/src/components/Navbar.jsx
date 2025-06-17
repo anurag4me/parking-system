@@ -104,15 +104,15 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to="/rent-your-space"
+                  to="/profile"
                   className={`block py-2 px-3 rounded ${
-                    activeLink === "Rent Parking"
+                    activeLink === "User Profile"
                       ? "bg-blue-700 text-white"
                       : "text-gray-900 dark:text-white hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white"
                   }`}
-                  onClick={() => handleLinkClick("Rent Parking")}
+                  onClick={() => handleLinkClick("User Profile")}
                 >
-                  Rent Parking
+                  User Profile
                 </Link>
               </li>
               <li>

@@ -8,7 +8,6 @@ import Login from "./pages/Login.jsx";
 import Logout from "./pages/Logout.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import Search from "./pages/Search.jsx";
-import RentParking from "./pages/RentParking.jsx";
 import About from "./pages/About.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
@@ -16,6 +15,7 @@ import { AuthProvider } from "./store/auth.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Booking from "./pages/Booking.jsx";
+import UserProfile from "./pages/UserProfile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +26,8 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/sign-up", element: <SignUp /> },
       { path: "/search", element: <Search /> },
-      { path: "/rent-your-space", element: <RentParking /> },
       { path: "/booking", element: <Booking /> },
+      { path: "/profile", element: <UserProfile /> },
       { path: "/about", element: <About /> },
       { path: "/contact-us", element: <ContactUs /> },
       { path: "/logout", element: <Logout /> },

@@ -9,6 +9,7 @@ const errorMiddleware = require("./middlewares/error-middleware.js");
 const ParkingSlot = require('./models/slots-model.js');
 const Booking = require('./models/booking-model.js');
 const ReleaseLog = require('./models/realeaseLog-model.js');
+const authMiddleware = require("./middlewares/auth-middleware.js");
 
 const PORT = 5000;
 const app = express();
@@ -239,6 +240,46 @@ app.post('/api/validate', async (req, res) => {
   }
 });
 
+// Get count of occupied slots
+app.get('/api/slots/occupied', async (req, res) => {
+  try {
+    const count = await ParkingSlot.countDocuments({ booked: true });
+    res.json({ count });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+app.get('/api/slots/release-all', authMiddleware, async (req, res) => {
+  try {
+    if(!req?.user.isAdmin) return res.status().json({
+      success: false,
+      message: "You don't have permission to perform that task!"
+    })
+
+    const result = await ParkingSlot.updateMany({}, {$set: {
+      isParked: false,
+      paymentDone: false,
+      booked: false,
+      parkedFrom: null,
+      parkedTo: null,
+      parkingHours: null,
+    }});
+
+    res.json({
+      success: true,
+      message: `All slots released successfully`,
+      result
+    });
+
+  } catch (err) {
+    console.error('Release error:', err);
+    res.status(500).json({
+      success: false,
+      message: 'Server error during slot release'
+    });
+  }
+})
 
 app.use("/api/form", contactRoute);
 app.use("/api/parking-spots", parkingSpotRoute);
