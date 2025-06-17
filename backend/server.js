@@ -293,6 +293,22 @@ app.get('/api/slots/release-all', authMiddleware, async (req, res) => {
   }
 })
 
+app.get('/api/bookings/my', authMiddleware, async (req, res) => {
+  try {
+    const bookings = await Booking.find({ 
+      userId: req.user.userId,
+      status: 'active' // Only show active bookings
+    })
+    .populate('slotId', 'name vehicleType floor pricePerHour')
+    .sort({ createdAt: -1 }); // Newest first
+
+    res.json(bookings);
+  } catch (err) {
+    console.error('Error fetching bookings:', err);
+    res.status(500).json({ message: 'Server error fetching bookings' });
+  }
+});
+
 app.use("/api/form", contactRoute);
 app.use("/api/parking-spots", parkingSpotRoute);
 
