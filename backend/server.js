@@ -131,6 +131,9 @@ app.post('/api/slots/release', async (req, res) => {
     slot.parkedFrom = null;
     slot.parkingHours = null;
 
+    // Update the booking status
+    await Booking.findOneAndUpdate({ slotId }, { status: "active" })
+
     // Create release log
     const releaseLog = new ReleaseLog({
       slotId: slot._id,
