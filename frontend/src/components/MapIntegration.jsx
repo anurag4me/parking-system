@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MapIntegration = ({ parkingSpots }) => {
   const mapRef = useRef(null); // Reference to the map container
@@ -6,6 +7,7 @@ const MapIntegration = ({ parkingSpots }) => {
   const [isMapLoaded, setIsMapLoaded] = useState(false); // State to track if map is loaded
   const [isError, setIsError] = useState(false); // Error handling state
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY; // API key from environment variables
+  const navigate = useNavigate(); // To navigate to Booking when location is selected
 
   // Load the Google Maps API
   useEffect(() => {
@@ -80,6 +82,7 @@ const MapIntegration = ({ parkingSpots }) => {
         // Add a click event listener to open the info window when marker is clicked
         marker.addListener("click", () => {
           infoWindow.open(googleMapRef.current, marker);
+          navigate("/booking");
         });
 
         // Store the marker to clear it later if necessary
@@ -87,6 +90,13 @@ const MapIntegration = ({ parkingSpots }) => {
       });
     }
   };
+
+  if (!isMapLoaded)
+    return (
+      <div className="h-[400px] w-full flex items-center justify-center bg-gray-900">
+        <div className="text-white text-xl animate-pulse">Loading map...</div>
+      </div>
+  );
   
   return <div className='rounded-lg' ref={mapRef} style={{ width: '100%', height: '400px' }} />;
 };

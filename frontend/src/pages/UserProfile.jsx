@@ -61,7 +61,13 @@ const UserProfile = () => {
     }
   };
 
-  if (loading) return <div className="text-center py-8">Loading profile...</div>;
+  if (loading)
+    return (
+      <div className="h-screen w-full flex items-center justify-center bg-gray-900">
+        <div className="text-white text-xl animate-pulse">Loading profile...</div>
+      </div>
+    );
+
   if (error) return <div className="text-red-500 text-center py-8">{error}</div>;
 
   return (

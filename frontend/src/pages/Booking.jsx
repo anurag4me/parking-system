@@ -165,7 +165,12 @@ const Booking = () => {
   };
 
 
-  if (loading) return <div className="flex justify-center items-center h-screen">Loading...</div>;
+   if (loading)
+    return (
+      <div className="h-screen w-full flex items-center justify-center bg-gray-900">
+        <div className="text-white text-xl animate-pulse">Loading...</div>
+      </div>
+    );
   if (error) return <div className="flex justify-center items-center h-screen text-red-500">{error}</div>;
 
   return (

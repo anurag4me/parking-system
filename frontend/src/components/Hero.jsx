@@ -18,7 +18,7 @@ const Hero = () => {
         className="w-full h-full"
       />
       <div className="z-0 container mx-auto absolute top-[4vw] left-[5vw]">
-        <h1 className="text-[6vw] font-bold title-font text-left font-sans hover:font-serif hover:font-normal">
+        <h1 className="text-[6vw] font-bold title-font text-left font-sans transition-transform duration-500 ease-in-out transform hover:scale-105 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">
           Effortlessly Find, <br />
           Reserve and Pay <br />
           for parking spaces

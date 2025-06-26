@@ -6,22 +6,15 @@ const searchParkingSpots = async (req, res) => {
     const locationName = req.query.locationName;
 
     // Step 1: Get coordinates of the location using Google Places API
-    const locationResponse = await fetch(
-      `https://maps.gomaps.pro/maps/api/place/textsearch/json`,
-      {
-        method: get,
-        params: {
-          query: locationName,
-          key: process.env.VITE_GOOGLE_MAPS_API_KEY,
-        },
-      }
-    );
+    const url = `https://maps.gomaps.pro/maps/api/place/textsearch/json?query=${encodeURIComponent(locationName)}&key=${process.env.VITE_GOOGLE_MAPS_API_KEY}`;
+    const locationResponse = await fetch(url);
+    const data = await locationResponse.json();
 
-    if (!locationResponse.data.results.length) {
+    if (!data.results.length) {
       return res.status(404).json({ message: "Location not found" });
     }
 
-    const coordinates = locationResponse.data.results[0].geometry.location;
+    const coordinates = data.results[0].geometry.location;
 
     // Step 2: Find nearby parking spots using MongoDB geospatial query
     const options = {
